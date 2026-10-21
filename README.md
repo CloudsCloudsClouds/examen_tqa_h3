@@ -88,4 +88,13 @@ Enviar por Moodle el enlace del repositorio y el informe final en PDF. El reposi
 
 Esto es contenido mio. Que interesante. Pero debo diferenciar mejor entre el trabajo hecho por IA y por mi.
 
+No voy a dejar que la IA vuelva a trabajar en este archivo.
 
+Por conveniencia, converti las plantillas a typst - basicamente latex pero mas bonito de usar.
+(Tambien lo uso para mi integrador y un generador de reportes.)
+
+## Objetivos
+### Caja negra
+Voy a documentar aquí mi trabajo hecho en www.saucedeomo.com y entonces dejare que la IA llene las plantillas y los reportes de bugs. Incluire documentacion y pruebas.
+
+Porsiacaso tambien añadire git lfs
