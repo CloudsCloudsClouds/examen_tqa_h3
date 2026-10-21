@@ -23,6 +23,22 @@ Copiar este formato al agregar trabajo nuevo:
 
 ## 2026-10-20 · OpenCode / DeepSeek V4.1 Flash
 
+**Solicitud:** reorganizar las carpetas del entregable 1 y crear los archivos Typst necesarios para trabajar caja negra con un diccionario de TCs.
+**Alcance:** estructura nueva, módulo de estilos, diccionarios y renderizadores.
+**Archivos:** `templates/tqa.typ`, `entregable-1/README.md`, `entregable-1/caja-negra/casos_caja_negra.typ`, `entregable-1/caja-negra/bugs_encontrados.typ`, `entregable-1/caja-negra/datos/casos.typ`, `entregable-1/caja-negra/datos/bugs.typ`, `entregable-1/caja-negra/evidencias/.gitkeep`, `AGENTS.md` (fila de registro).
+**Cambios:**
+- Se creó `entregable-1/caja-negra/` como espacio de trabajo de caja negra, con `datos/` para los diccionarios y `evidencias/` para capturas.
+- Se creó `templates/tqa.typ` con los estilos y componentes reutilizables, basado en la plantilla existente; `templates/plantilla_tc_tqa.typ` no se modificó.
+- Se creó `datos/casos.typ` con 5 slots (`TC-001` a `TC-005`), constructores para casos, datos, pasos y evidencias, y el esquema documentado en comentarios.
+- Se creó `casos_caja_negra.typ`, que genera portada, resumen y una ficha de diseño + ejecución por TC.
+- Se creó `datos/bugs.typ` vacío y `bugs_encontrados.typ`, sin inventar bugs.
+- Se compilaron ambos documentos con Typst 0.15.1 y se probó un caso y un bug de ejemplo en una copia temporal para verificar el renderizado.
+**No modificado:** `README.md`, `templates/plantilla_tc_tqa.typ`, `templates/Bug_report_template_blank.typ`, `LICENSE`, el PPTX.
+**Commits:** ninguno.
+**Revisión humana:** pendiente.
+
+## 2026-10-20 · OpenCode / DeepSeek V4.1 Flash
+
 **Solicitud:** crear un archivo para llevar cuenta de todo el trabajo hecho por agentes y documentar lo realizado.
 **Alcance:** archivo completo.
 **Archivos:** `AI-CHANGELOG.md` (nuevo), `AGENTS.md` (fila agregada al registro).

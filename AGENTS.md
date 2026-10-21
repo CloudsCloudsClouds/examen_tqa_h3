@@ -51,3 +51,4 @@ Los commits hechos solo por Daniel no llevan ese trailer.
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `AGENTS.md` | Política completa, a pedido de Daniel |
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `README.md` | Resumen del enunciado del Hito 3 extraído del PPTX |
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `AI-CHANGELOG.md` | Log cronológico de aportes IA |
+| 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `entregable-1/**`, `templates/tqa.typ` | Estructura de caja negra, diccionario de TCs y renderizadores Typst |
