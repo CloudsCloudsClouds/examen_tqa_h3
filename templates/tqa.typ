@@ -1,4 +1,4 @@
-// IA | OpenCode | DeepSeek V4.1 Flash | 2026-10-20 | módulo de estilos reutilizables para documentos de caja negra
+// IA | OpenCode | DeepSeek V4.1 Flash | 2026-10-20 | módulo de estilos reutilizables para documentos de caja negra | revisión humana: aprobada por Daniel
 // Basado en templates/plantilla_tc_tqa.typ. La plantilla original no se modifica.
 // Este archivo no genera contenido por sí solo: define la configuración y los componentes.
 

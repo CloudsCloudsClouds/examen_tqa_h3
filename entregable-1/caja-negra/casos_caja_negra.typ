@@ -1,6 +1,6 @@
-// IA | OpenCode | DeepSeek V4.1 Flash | 2026-10-20 | renderizador de casos de caja negra
+// IA | OpenCode | DeepSeek V4.1 Flash | 2026-10-20 | renderizador de casos de caja negra (solo diseño)
 // Genera un PDF a partir del diccionario de TCs en datos/casos.typ.
-// Compilar: typst compile entregable-1/caja-negra/casos_caja_negra.typ
+// Compilar: typst compile --root . entregable-1/caja-negra/casos_caja_negra.typ
 
 #import "../../templates/tqa.typ": *
 #import "datos/casos.typ": casos
@@ -21,36 +21,34 @@
 #parrafo(alineacion: center, text(size: 10pt)[#autor · #fecha])
 
 #v(18pt)
-#tabla(2,
+#tabla(1,
   table.cell(fill: c-diseno, align: center + horizon,
-    text(size: 12pt, weight: "bold")[01 \ DISEÑAR EL TC \ Definir qué se quiere comprobar y cómo.]),
-  table.cell(fill: c-ejec, align: center + horizon,
-    text(size: 12pt, weight: "bold")[02 \ EJECUTAR LA PRUEBA \ Registrar qué ocurrió realmente.]),
+    text(size: 12pt, weight: "bold")[DISEÑO DE CASOS \ Definir qué se quiere comprobar y cómo.]),
 )
 
 #parrafo(alineacion: center, arriba: 2.5pt,
-  text(size: 8pt, style: "italic", fill: c-gris)[Documento generado por IA a partir del diccionario de casos de Daniel. Revisión humana pendiente.])
+  text(size: 9pt, style: "italic", fill: c-gris)[Alcance: diseño de casos de prueba.])
 
 // ── Resumen ───────────────────────────────────────────────────────────────────
 #pagebreak()
 #sec(nivel: 1)[Resumen de casos]
-#parrafo[Estado actual del diccionario. Los campos vacíos se muestran como «Pendiente».]
+#parrafo[Resumen de los 5 casos definidos para caja negra.]
 #registro(
   c-azul,
-  ("ID", "Título", "Módulo", "Prioridad", "Estado"),
+  ("ID", "Título", "Módulo", "Tipo", "Prioridad"),
   casos.map(tc => (
     tc.id,
     texto(tc.titulo),
     texto(tc.modulo),
+    texto(tc.tipo),
     texto(tc.prioridad),
-    tc.ejecucion.estado,
   )),
-  centradas: (0, 3, 4),
+  centradas: (0, 4),
 )
 #parrafo[Total: #casos.len() casos.]
 
-// ── Fichas ────────────────────────────────────────────────────────────────────
-#let ficha-diseno(tc) = {
+// ── Ficha de caso ─────────────────────────────────────────────────────────────
+#let ficha-caso(tc) = {
   sec(nivel: 1)[#tc.id · #texto(tc.titulo, defecto: "Caso sin título")]
 
   ficha(
@@ -76,7 +74,12 @@
     registro(
       c-azul,
       ("Dato", "Valor", "Origen", "Observación"),
-      tc.datos.map(d => (texto(d.dato), texto(d.valor), texto(d.origen), texto(d.observacion, defecto: "—"))),
+      tc.datos.map(d => (
+        texto(d.dato),
+        texto(d.valor),
+        texto(d.origen),
+        texto(d.observacion, defecto: "—"),
+      )),
       centradas: (),
     )
   }
@@ -102,74 +105,8 @@
   ficha(size: 9pt, ("CRITERIO DE ÉXITO", texto(tc.criterio)))
 }
 
-#let ficha-ejecucion(tc) = {
-  sec(color: c-verde, nivel: 1)[#tc.id · Ejecución]
-
-  ficha(
-    ("ID DEL TC", tc.id, "EJECUTADO POR", texto(tc.ejecucion.ejecutado_por)),
-    ("FECHA", texto(tc.ejecucion.fecha), "HORA", texto(tc.ejecucion.hora)),
-    ("AMBIENTE", texto(tc.ejecucion.ambiente), "VERSIÓN", texto(tc.ejecucion.version)),
-  )
-
-  align(center, chip-estado(tc.ejecucion.estado))
-
-  sec("1. Resultado de la ejecución")
-  let estados = ("PASS", "FAIL", "BLOCKED", "NOT RUN")
-  let actual = upper(tc.ejecucion.estado)
-  tabla(4, ..estados.map(e => table.cell(
-    fill: if actual == e { estado-color(e) } else { c-cebra },
-    align: center + horizon,
-    text(size: 10pt, weight: "bold", fill: if actual == e { white } else { c-gris }, e),
-  )))
-
-  sec("2. Resultado observado")
-  ficha(size: 9pt, ("¿QUÉ OCURRIÓ REALMENTE?", texto(tc.ejecucion.observado)))
-  separador
-  ficha(size: 9pt, ("COMPARACIÓN", texto(tc.ejecucion.comparacion)))
-
-  sec("3. Registro de ejecución por paso")
-  if tc.ejecucion.pasos.len() == 0 {
-    parrafo[Pendiente.]
-  } else {
-    registro(
-      c-verde,
-      ("#", "Paso ejecutado", "Resultado observado", "Estado", "Observación"),
-      tc.ejecucion.pasos.enumerate().map(((i, p)) => (
-        str(i + 1),
-        texto(p.accion),
-        texto(p.observado),
-        texto(p.estado),
-        texto(p.observacion, defecto: "—"),
-      )),
-      centradas: (0, 3), size-cab: 8pt, size: 7.5pt,
-    )
-  }
-
-  sec("4. Evidencia")
-  if tc.ejecucion.evidencias.len() == 0 {
-    parrafo[Pendiente.]
-  } else {
-    registro(
-      c-verde,
-      ("Tipo", "Nombre o referencia", "Descripción"),
-      tc.ejecucion.evidencias.map(e => (texto(e.tipo), texto(e.referencia), texto(e.descripcion, defecto: "—"))),
-      centradas: (),
-    )
-  }
-
-  sec(color: c-rojo, "5. Si el resultado es FAIL")
-  ficha(size: 9pt, ("DESVIACIÓN ENCONTRADA", texto(tc.ejecucion.desviacion, defecto: "N/A")))
-  separador
-  ficha(size: 9pt, ("REFERENCIA DEL DEFECTO", texto(tc.ejecucion.bug, defecto: "N/A")))
-
-  sec("6. Observaciones de ejecución")
-  ficha(size: 9pt, ("OBSERVACIONES", texto(tc.ejecucion.observaciones, defecto: "—")))
-}
-
 // ── Cuerpo ────────────────────────────────────────────────────────────────────
 #for tc in casos {
   pagebreak()
-  ficha-diseno(tc)
-  pagebreak()
-  ficha-ejecucion(tc)
+  ficha-caso(tc)
 }

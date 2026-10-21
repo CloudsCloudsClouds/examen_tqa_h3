@@ -168,3 +168,5 @@ Ordenado por precio
   - Select “Name (Z to A)”. Expected: Test.allTheThings() T-Shirt (Red) first, Sauce Labs Backpack last.
 - Requirements: Each sort option reorders the full product list by its criterion, and the default sort is Name (A to Z).
 - No muy importante. Pero util de tener cerca.
+
+
