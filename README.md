@@ -1,6 +1,9 @@
 # examen_tqa_h3
 Daniel Bernal
 
+- Resuelto todo excepto bugs y bug reports.
+- Estatus: Frustrado. Hecho con la ayuda de opencode como experimento pero acabo perdiendo mas tiempo que el que acabo ganando. Pero fue interesante tratar de hacer QA con un modelo de IA.
+
 Esto es principalmente un examen de TQA, pero en cierta forma tambien es un experimento sobre hacer TQA de forma correcta con asistencia de IA. O agentes de IA.
 
 Ojo. El bulto del trabajo es hecho por mi persona, pero me estoy asistiendo por agentes de IA locales. Todo el contenido hecho por IA es marcado como tal.
