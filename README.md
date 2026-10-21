@@ -102,3 +102,69 @@ Porsiacaso tambien añadire git lfs
 ... cierto. Hay que hacer avance en proyectos de github...
 
 Listo. Trabajare principalmente en github con los issues y pull requests. Listo, ya entiendo porque usar ramas.
+
+
+Volviendo aquí.
+
+#### TCCJ-001
+Loggeado valido llega hasta la pagina de productos. 
+- Smoke, unit
+- Confirma que el usuario standar puede logear y llegar al catalogo.
+- Pasos
+  - Ve a www.saucedemo.com
+  - loggea usando `standard_user` con `secret_sauce` como contraseña.
+  - Cliquea `LOGIN`
+- Requerimientos: Un usuario registrado y productos con los cuales llegar al catalogo.
+- Importante, si falla todo los demas son invalidos
+
+#### TCCJ-002
+Validacion del campo de login
+- Comprueba la validacion de los campos. Cada campo que falle debe registrar su fallo y el usuario se debe quedar en el inicio de sesion
+- Sanity, unit
+- Pasos
+  - Abre pagina login (saucedemo), deja usuario vacio e ingresa contraseñá `secret_sauce`, cliquea `LOGIN`. Resultado esperado: Fallo, aun en login.
+  - Entra `standard_user`, deja contraseña vacia y da `LOGIn`. Resultado esperado: Fallo, aun en login.
+  - Mete `standard_user` y `wrong_password` y cliquea `LOGIN`. Resultado esperado: Fallo, especifico sobre "usuario u contraseña incorrecto". Aun en login.
+- Requerimientos. Ninguno.
+- Importante, pero menos importante que TCCJ-001.
+
+#### TCCJ-003
+Carrito y checkout tienen misma cantidad de items seleccionados
+- Verifica que los datos fluyen de forma correcta.
+- Integracion, sanidad
+- Pasos
+  - Login `standard_user`
+  [Esto de aquí esta hecho con IA. No hay tiempo. TRADUCIR AL ESPAÑOL EN DOCUMENTO PRESENTABLE]
+  - Click “Add to cart” on Sauce Labs Backpack ($29.99) and Sauce Labs Bike Light ($9.99). Expected: cart badge shows 2, and both buttons change to “Remove”.
+  - Open the cart. Expected: both items listed with correct prices and quantity 1.
+  - Click Checkout, enter any first name, last name, and zip code, then click Continue. Expected: overview lists both items, Item total is $39.98, and Total equals Item total plus Tax.
+- Requirements: Items added to the cart appear with correct prices, the badge count matches the cart, the checkout item total equals the sum of item prices, and the order total equals item total plus tax.
+- No muy importante, pero para que funcione necesita muchas cosas funcionando. Util.
+
+#### TCCJ-004
+Compra de inicio a fin
+- Sistema, Aceptacion
+- Un camino feliz. Testea compra de un producto desde loggeado a fin.
+- Pasos
+[IA, TRADUCE]
+  - Log in as standard_user with secret_sauce. Expected: Products page.
+  - Add Sauce Labs Bolt T-Shirt to the cart. Expected: badge shows 1.
+  - Open the cart and click Checkout. Expected: “Checkout: Your Information”.
+  - Enter First Name Test, Last Name User, and Zip 12345, then click Continue. Expected: “Checkout: Overview”.
+  - Click Finish. Expected: “Thank you for your order!” is displayed.
+  - Click Back Home. Expected: Products page with an empty cart badge.
+- Requirements: A logged-in user can complete a purchase, see an order confirmation, and return to the catalog with an empty cart.
+- Importante. Muy importante.
+
+#### TCCJ-005
+Ordenado por precio
+- Sanidad, regresion
+- Se rompe facil, es lo mas probable que este mal tras hacer un cambio.
+- Pasos
+[IA, TRADUCE AL ESPAÑOL]
+  - Log in as standard_user. Expected: sort defaults to “Name (A to Z)”, with Sauce Labs Backpack first.
+  - Select “Price (low to high)”. Expected: order is $7.99 Onesie, $9.99 Bike Light, $15.99 Bolt T-Shirt and Test.allTheThings() T-Shirt (Red) in either order, $29.99 Backpack, $49.99 Fleece Jacket.
+  - Select “Price (high to low)”. Expected: exact reverse of step 2, with Fleece Jacket first.
+  - Select “Name (Z to A)”. Expected: Test.allTheThings() T-Shirt (Red) first, Sauce Labs Backpack last.
+- Requirements: Each sort option reorders the full product list by its criterion, and the default sort is Name (A to Z).
+- No muy importante. Pero util de tener cerca.
