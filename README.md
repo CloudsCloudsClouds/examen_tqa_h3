@@ -169,4 +169,30 @@ Ordenado por precio
 - Requirements: Each sort option reorders the full product list by its criterion, and the default sort is Name (A to Z).
 - No muy importante. Pero util de tener cerca.
 
+### Caja blanca
+Lo mismo. Test cases. Usar misma plantilla.
 
+Cobertura de sentencias, decisiones, condiciones, y una justificacion.
+
+#### TCCB-001
+Validar edad de compra
+- Solo ver si eres mayor a 18.
+- Pasos
+	- Correr funcion con 17: Fallo
+	- Correr funcion con 18: Exito
+
+#### TCCB-002
+Validar que la funcion corre
+- Solo ver si la funcion puede correr para comenzar
+- Pasos
+	- Correr TCCB-001
+	- No falla por ejecucion
+	- Correr TCCB-003
+	- Falla por condicioines
+
+#### TCCB-003
+Validar no acepta letras
+- Ver que la funcion falle por condiciones incorrectas
+- Pasos
+	- Correr `validar_compra("ab", "true", "cien", "A lot"):`
+	- La funcion falla
