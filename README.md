@@ -169,4 +169,61 @@ Ordenado por precio
 - Requirements: Each sort option reorders the full product list by its criterion, and the default sort is Name (A to Z).
 - No muy importante. Pero util de tener cerca.
 
+### Caja blanca
+Lo mismo. Test cases. Usar misma plantilla.
 
+Cobertura de sentencias, decisiones, condiciones, y una justificacion.
+
+#### TCCB-001
+Validar edad de compra
+- Solo ver si eres mayor a 18.
+- Pasos
+	- Correr funcion con 17: Fallo
+	- Correr funcion con 18: Exito
+
+#### TCCB-002
+Validar que la funcion corre
+- Solo ver si la funcion puede correr para comenzar
+- Pasos
+	- Correr TCCB-001
+	- No falla por ejecucion
+	- Correr TCCB-003
+	- Falla por condicioines
+
+#### TCCB-003
+Validar no acepta letras
+- Ver que la funcion falle por condiciones incorrectas
+- Pasos
+	- Correr `validar_compra("ab", "true", "cien", "A lot"):`
+	- La funcion falla
+
+### Gherkin
+(No hay tiempo para bugs. Porque lo hago con IA????)
+
+- Caso TCCN-001
+```
+Feature: Login
+
+  @smoke
+  Scenario: Valid login reaches Products page
+    Given I am on the login page at https://www.saucedemo.com/
+    When I log in with username "standard_user" and password "secret_sauce"
+    Then I should see the Products page with six items
+```
+- Caso TCCN-002
+```
+Feature: Login validation
+
+  @unit
+  Scenario Outline: Login rejects missing or incorrect credentials
+    Given I am on the login page
+    When I log in with username "<username>" and password "<password>"
+    Then I should see the error "<error>"
+    And I should still be on the login page
+
+    Examples:
+      | username      | password       | error                                                                  |
+      |               | secret_sauce   | Epic sadface: Username is required                                     |
+      | standard_user |                | Epic sadface: Password is required                                     |
+      | standard_user | wrong_password | Epic sadface: Username and password do not match any user in this service |
+```
