@@ -53,3 +53,4 @@ Los commits hechos solo por Daniel no llevan ese trailer.
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `AI-CHANGELOG.md` | Log cronológico de aportes IA |
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `entregable-1/**`, `templates/tqa.typ` | Estructura de caja negra, diccionario de TCs y renderizadores Typst |
 | 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `entregable-1/caja-negra/datos/casos.typ`, `casos_caja_negra.typ` | 5 casos de caja negra desde el README; solo diseño |
+| 2026-10-20 | OpenCode / DeepSeek V4.1 Flash | `entregable-2/**` | Caja blanca: análisis de cobertura y 3 casos |

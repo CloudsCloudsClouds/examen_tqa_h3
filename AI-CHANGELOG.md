@@ -23,6 +23,20 @@ Copiar este formato al agregar trabajo nuevo:
 
 ## 2026-10-20 · OpenCode / DeepSeek V4.1 Flash
 
+**Solicitud:** crear el entregable de caja blanca en TCs.
+**Alcance:** análisis de cobertura + 3 casos de prueba, solo diseño.
+**Archivos:** `entregable-2/README.md`, `entregable-2/caja-blanca/casos_caja_blanca.typ`, `entregable-2/caja-blanca/datos/casos.typ`, `entregable-2/caja-blanca/datos/analisis.typ`, `AGENTS.md` (fila de registro).
+**Cambios:**
+- Se identificaron decisiones (`D1`-`D3`), condiciones (`C1`-`C4`) y sentencias (`S1`-`S7`).
+- Se eligió cobertura de decisiones: mínimo 4 casos; con 3 se cubren 5 de 6 resultados y falta `D3 falso`.
+- Se diseñaron `TCCB-001` (edad menor de 18), `TCCB-002` (cuenta inactiva) y `TCCB-003` (compra aprobada).
+- Se documentó el ajuste de un cuarto caso y la nota sobre tipos inválidos (`TypeError`).
+**No modificado:** `README.md`, `entregable-1/`, las plantillas originales, `LICENSE` y el PPTX.
+**Commits:** ninguno.
+**Revisión humana:** pendiente.
+
+## 2026-10-20 · OpenCode / DeepSeek V4.1 Flash
+
 **Solicitud:** traducir los 5 casos del README de Daniel a la plantilla Typst, solo diseño; sin ejecuciones ni bugs. Marcar como aprobados los cambios anteriores.
 **Alcance:** diccionario de casos, renderizador de solo diseño y limpieza del alcance del entregable.
 **Archivos:** `entregable-1/caja-negra/datos/casos.typ`, `entregable-1/caja-negra/casos_caja_negra.typ`, `entregable-1/README.md`, `AGENTS.md`, `README.md` (solo estado del banner), `AI-CHANGELOG.md`; se eliminaron `bugs_encontrados.typ`, `datos/bugs.typ` y `evidencias/` del entregable.
